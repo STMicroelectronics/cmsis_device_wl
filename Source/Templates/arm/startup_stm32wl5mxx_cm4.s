@@ -1,7 +1,7 @@
 ;********************************************************************************
-;* File Name          : startup_stm32wle5xx.s
+;* File Name          : startup_stm32wl5mxx_cm4.s
 ;* Author             : MCD Application Team
-;* Description        : STM32WLE5xx devices vector table for MDK-ARM toolchain.
+;* Description        : STM32WL55xx devices vector table for MDK-ARM toolchain.
 ;*                      This module performs:
 ;*                      - Set the initial SP
 ;*                      - Set the initial PC == Reset_Handler
@@ -95,7 +95,7 @@ __Vectors       DCD     __initial_sp                      ; Top of Stack
                 DCD     DMA1_Channel7_IRQHandler          ; DMA1 Channel 7 Interrupt
                 DCD     ADC_IRQHandler                    ; ADC Interrupt
                 DCD     DAC_IRQHandler                    ; DAC Interrupt
-                DCD     0                                 ; Reserved
+                DCD     C2SEV_PWR_C2H_IRQHandler          ; CPU M0+ SEV and PWR CPU M0+ HOLD wakeup Interrupt
                 DCD     COMP_IRQHandler                   ; COMP1 and COMP2 Interrupts
                 DCD     EXTI9_5_IRQHandler                ; EXTI Lines [9:5] Interrupt
                 DCD     TIM1_BRK_IRQHandler               ; TIM1 Break Interrupt
@@ -120,8 +120,8 @@ __Vectors       DCD     __initial_sp                      ; Top of Stack
                 DCD     RTC_Alarm_IRQHandler              ; RTC Alarms (A and B) Interrupt
                 DCD     LPTIM3_IRQHandler                 ; LPTIM3 Interrupt
                 DCD     SUBGHZSPI_IRQHandler              ; SUBGHZSPI Interrupt
-                DCD     0                                 ; Reserved
-                DCD     0                                 ; Reserved
+                DCD     IPCC_C1_RX_IRQHandler             ; IPCC CPU1 RX occupied interrupt
+                DCD     IPCC_C1_TX_IRQHandler             ; IPCC CPU1 RX free interrupt
                 DCD     HSEM_IRQHandler                   ; HSEM0 Interrupt
                 DCD     I2C3_EV_IRQHandler                ; I2C3 Event Interrupt
                 DCD     I2C3_ER_IRQHandler                ; I2C3 Error Interrupt
@@ -222,6 +222,7 @@ Default_Handler PROC
                 EXPORT  DMA1_Channel7_IRQHandler          [WEAK]
                 EXPORT  ADC_IRQHandler                    [WEAK]
                 EXPORT  DAC_IRQHandler                    [WEAK]
+                EXPORT  C2SEV_PWR_C2H_IRQHandler          [WEAK]
                 EXPORT  COMP_IRQHandler                   [WEAK]
                 EXPORT  EXTI9_5_IRQHandler                [WEAK]
                 EXPORT  TIM1_BRK_IRQHandler               [WEAK]
@@ -246,6 +247,8 @@ Default_Handler PROC
                 EXPORT  RTC_Alarm_IRQHandler              [WEAK]
                 EXPORT  LPTIM3_IRQHandler                 [WEAK]
                 EXPORT  SUBGHZSPI_IRQHandler              [WEAK]
+                EXPORT  IPCC_C1_RX_IRQHandler             [WEAK]
+                EXPORT  IPCC_C1_TX_IRQHandler             [WEAK]
                 EXPORT  HSEM_IRQHandler                   [WEAK]
                 EXPORT  I2C3_EV_IRQHandler                [WEAK]
                 EXPORT  I2C3_ER_IRQHandler                [WEAK]
@@ -282,6 +285,7 @@ DMA1_Channel6_IRQHandler
 DMA1_Channel7_IRQHandler
 ADC_IRQHandler
 DAC_IRQHandler
+C2SEV_PWR_C2H_IRQHandler
 COMP_IRQHandler
 EXTI9_5_IRQHandler
 TIM1_BRK_IRQHandler
@@ -306,6 +310,8 @@ EXTI15_10_IRQHandler
 RTC_Alarm_IRQHandler
 LPTIM3_IRQHandler
 SUBGHZSPI_IRQHandler
+IPCC_C1_RX_IRQHandler
+IPCC_C1_TX_IRQHandler
 HSEM_IRQHandler
 I2C3_EV_IRQHandler
 I2C3_ER_IRQHandler

@@ -1,7 +1,7 @@
 ;********************************************************************************
-;* File Name          : startup_stm32wl54xx_cm0plus.s
+;* File Name          : startup_stm32wl5mxx_cm0plus.s
 ;* Author             : MCD Application Team
-;* Description        : STM32WL54xx devices vector table for MDK-ARM toolchain.
+;* Description        : STM32WL55xx devices vector table for MDK-ARM toolchain.
 ;*                      This module performs:
 ;*                      - Set the initial SP
 ;*                      - Set the initial PC == Reset_Handler

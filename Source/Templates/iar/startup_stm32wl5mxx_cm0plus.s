@@ -1,5 +1,5 @@
 ;********************************************************************************
-;* File Name          : startup_stm32wl55xx_cm0plus.s
+;* File Name          : startup_stm32wl5mxx_cm0plus.s
 ;* Author             : MCD Application Team
 ;* Description        : MO+ core vector table of the STM32WLxxxx devices for the
 ;*                      IAR (EWARM) toolchain.
